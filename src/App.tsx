@@ -9,6 +9,7 @@ import { RegisterPage } from '@/features/auth/pages/RegisterPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { LandingPage } from '@/pages/LandingPage'
 import { AppShell } from '@/shared/components/AppShell'
+import { AppQueryProvider } from '@/shared/query/QueryProvider'
 import { ThemeProvider } from '@/shared/theme/ThemeProvider'
 import { ToastProvider } from '@/shared/toast/ToastProvider'
 import { ProtectedRoute } from '@/shared/routes/ProtectedRoute'
@@ -43,14 +44,16 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <ToastProvider>
-        <BrowserRouter>
-          <div className="min-h-dvh">
-            <AppShell />
-            <AnimatedRoutes />
-          </div>
-        </BrowserRouter>
-      </ToastProvider>
+      <AppQueryProvider>
+        <ToastProvider>
+          <BrowserRouter>
+            <div className="min-h-dvh">
+              <AppShell />
+              <AnimatedRoutes />
+            </div>
+          </BrowserRouter>
+        </ToastProvider>
+      </AppQueryProvider>
     </ThemeProvider>
   )
 }
